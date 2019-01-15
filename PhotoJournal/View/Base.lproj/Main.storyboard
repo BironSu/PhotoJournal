@@ -21,7 +21,11 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DSa-Qi-Z5K"/>
-                                    <barButtonItem style="done" systemItem="add" id="tWj-ZX-rO5"/>
+                                    <barButtonItem style="done" systemItem="add" id="tWj-ZX-rO5">
+                                        <connections>
+                                            <segue destination="xo8-Ot-jwd" kind="show" id="U3H-CG-lwg"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="VU2-Zp-Nie"/>
                                 </items>
                             </toolbar>
@@ -35,30 +39,30 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lWA-ct-Aro">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainCell" id="lWA-ct-Aro" customClass="PhotoCollectionViewCell" customModule="PhotoJournal" customModuleProvider="target">
                                         <rect key="frame" x="2.5" y="0.0" width="370" height="355"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="370" height="355"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aDT-oI-StM">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image-2" translatesAutoresizingMaskIntoConstraints="NO" id="aDT-oI-StM">
                                                     <rect key="frame" x="28" y="48" width="314" height="279"/>
                                                 </imageView>
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZW-Cz-t7H">
                                                     <rect key="frame" x="28" y="196" width="314" height="139.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9T-D1-HXh">
-                                                            <rect key="frame" x="0.0" y="110" width="314" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9T-D1-HXh">
+                                                            <rect key="frame" x="0.0" y="113" width="314" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ndk-tQ-Uhf">
-                                                            <rect key="frame" x="0.0" y="40" width="314" height="70"/>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ndk-tQ-Uhf">
+                                                            <rect key="frame" x="0.0" y="40" width="314" height="73"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-ot-wRE">
@@ -101,6 +105,11 @@
                                             <constraint firstItem="UZW-Cz-t7H" firstAttribute="height" secondItem="aDT-oI-StM" secondAttribute="height" multiplier="0.5" id="ukt-bq-5wm"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="aDT-oI-StM" secondAttribute="trailing" constant="20" id="v8v-AE-cl9"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="mainDate" destination="S9T-D1-HXh" id="Gtj-Vw-m4j"/>
+                                            <outlet property="mainImage" destination="aDT-oI-StM" id="OmX-TH-Vqg"/>
+                                            <outlet property="mainTextView" destination="Ndk-tQ-Uhf" id="c4F-z8-4ha"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -118,6 +127,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="W9D-E7-ae8"/>
+                    <connections>
+                        <outlet property="mainCollectionView" destination="S8t-yd-aZf" id="oqj-vc-DXB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -134,28 +146,44 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bue-p6-m1t">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Photo Library" id="IDG-q1-LWv"/>
+                                    <barButtonItem title="Photo Library" id="IDG-q1-LWv">
+                                        <connections>
+                                            <action selector="photoLibraryButtonPressed:" destination="xo8-Ot-jwd" id="Ii8-ZY-qQh"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="RP6-4m-shD"/>
-                                    <barButtonItem systemItem="camera" id="rhc-Aj-9NC"/>
+                                    <barButtonItem systemItem="camera" id="rhc-Aj-9NC">
+                                        <connections>
+                                            <action selector="cameraButtonPressed:" destination="xo8-Ot-jwd" id="uth-WW-12i"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhM-op-hjb">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem id="aYj-Hk-j9Y">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="uOW-BQ-v0O"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="5vf-z1-0rH"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="uOW-BQ-v0O">
+                                            <connections>
+                                                <action selector="Cancel:" destination="xo8-Ot-jwd" id="jVc-1z-nbi"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="5vf-z1-0rH">
+                                            <connections>
+                                                <action selector="Save:" destination="xo8-Ot-jwd" id="5r8-ui-cbb"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kFY-zv-x1t">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kFY-zv-x1t">
                                 <rect key="frame" x="0.0" y="64" width="375" height="143.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.72323128169999995" green="0.72323128169999995" blue="0.72323128169999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rbS-HK-52T">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image-2" translatesAutoresizingMaskIntoConstraints="NO" id="rbS-HK-52T">
                                 <rect key="frame" x="0.0" y="245.5" width="375" height="333.5"/>
                             </imageView>
                         </subviews>
@@ -178,10 +206,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ugd-du-Jwb"/>
                     </view>
+                    <connections>
+                        <outlet property="addImage" destination="rbS-HK-52T" id="1Y8-1j-Uvf"/>
+                        <outlet property="addTextView" destination="kFY-zv-x1t" id="YiY-fh-gbQ"/>
+                        <outlet property="cameraButton" destination="rhc-Aj-9NC" id="pLI-H6-vLK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJZ-I1-sa8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1817" y="112"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder-image-2" width="512" height="512"/>
+    </resources>
 </document>

@@ -10,6 +10,8 @@ import Foundation
 
 final class PhotoJournalModel {
     private static let filename = "PhotoJournalList.plist"
+    static var photoJournal = [PhotoJournal]()
+
     private init() {}
     
     static func savePhotoJournal(photoJournal: PhotoJournal) {
@@ -21,13 +23,12 @@ final class PhotoJournalModel {
             print("Property list encoding error: \(error)")
         }
     }
-    static func getPhotoJournal() -> PhotoJournal? {
+    static func getPhotoJournal() -> [PhotoJournal] {
         let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: filename).path
-        var photoJournal: PhotoJournal?
         if FileManager.default.fileExists(atPath: path) {
             if let data = FileManager.default.contents(atPath: path) {
                 do {
-                    photoJournal = try PropertyListDecoder().decode(PhotoJournal.self, from: data)
+                    photoJournal = try PropertyListDecoder().decode([PhotoJournal].self, from: data)
                 } catch {
                     print("Property list decoding error: \(error)")
                 }

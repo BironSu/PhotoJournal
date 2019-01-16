@@ -9,12 +9,12 @@
 import Foundation
 
 final class PhotoJournalModel {
-    private static let filename = "PhotoJournalList.plist"
+    private static let filename = "PhotoJournalList1.plist"
     static var photoJournal = [PhotoJournal]()
 
     private init() {}
     
-    static func savePhotoJournal(photoJournal: PhotoJournal) {
+    static func savePhotoJournal() {
         let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: filename)
         do {
             let data = try PropertyListEncoder().encode(photoJournal)
@@ -23,12 +23,17 @@ final class PhotoJournalModel {
             print("Property list encoding error: \(error)")
         }
     }
+    static func addPhotoJournal(photo: PhotoJournal) {
+        photoJournal.append(photo)
+        savePhotoJournal()
+        
+    }
     static func getPhotoJournal() -> [PhotoJournal] {
         let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: filename).path
         if FileManager.default.fileExists(atPath: path) {
             if let data = FileManager.default.contents(atPath: path) {
                 do {
-                    photoJournal = try PropertyListDecoder().decode([PhotoJournal].self, from: data)
+                    photoJournal = try PropertyListDecoder().decode([PhotoJournal].self, from: data).sorted(by: {$0.createdAt > $1.createdAt})
                 } catch {
                     print("Property list decoding error: \(error)")
                 }

@@ -9,7 +9,7 @@
 import Foundation
 
 final class DataPersistenceManager {
-    private static let filename = "PhotoJournalList.plist"
+    private static let filename = "PhotoJournalList1.plist"
     
     // path to documents directory
     // ".../Documents"

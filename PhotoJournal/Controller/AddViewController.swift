@@ -46,7 +46,8 @@ class AddViewController: UIViewController {
         let timestamp = isoDateFormatter.string(from: date)
         if let imageData = imageHolder.jpegData(compressionQuality: 0.5) {
             let photoJournal = PhotoJournal.init(createdAt: timestamp, imageData: imageData, description: description)
-            PhotoJournalModel.savePhotoJournal(photoJournal: photoJournal)
+            PhotoJournalModel.addPhotoJournal(photo: photoJournal)
+            PhotoJournalModel.savePhotoJournal()
         }
         dismiss(animated: true, completion: nil)
     }

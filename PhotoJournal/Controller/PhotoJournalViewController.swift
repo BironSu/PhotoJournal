@@ -19,8 +19,8 @@ class PhotoJournalViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainCollectionView.dataSource = self
         updateImage()
+        mainCollectionView.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
         updateImage()
@@ -28,27 +28,64 @@ class PhotoJournalViewController: UIViewController {
     }
     func updateImage() {
         photos = PhotoJournalModel.getPhotoJournal()
-        
     }
 }
 
-extension PhotoJournalViewController: UICollectionViewDataSource {
+extension PhotoJournalViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "MainCell", for: indexPath) as? PhotoCollectionViewCell else {return UICollectionViewCell()}
         
-        let photo = PhotoJournalModel.getPhotoJournal()[indexPath.row]
+        let photo = photos[indexPath.row]
         cell.mainDate.text = photo.dateFormattedString
-        cell.mainDate.layer.cornerRadius = 30
+        cell.mainDate.layer.cornerRadius = 35
         cell.mainDate.layer.masksToBounds = true
         cell.mainTextView.text = photo.description
+        cell.mainTextView.layer.cornerRadius = 10
+        cell.mainTextView.isEditable = false
         cell.mainImage.image = UIImage(data: photo.imageData)
         cell.mainImage.layer.cornerRadius = 30
-        
         cell.mainImage.layer.masksToBounds = true
-        
+        cell.editButton.tag = indexPath.row
         return cell
+    }
+
+    @IBAction func editButton(sender: UIButton) {
+        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler:
+        {
+            (alert: UIAlertAction!) -> Void in
+            PhotoJournalModel.deletePhotoJournal(index: sender.tag)
+            self.updateImage()
+        })
+        
+        let shareAction = UIAlertAction(title: "Share", style: .default, handler:
+        {
+            (alert: UIAlertAction!) -> Void in
+            print("Shared")
+        })
+        
+        let editAction = UIAlertAction(title: "Edit", style: .default, handler:
+        {
+            (alert: UIAlertAction!) -> Void in
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            guard let destinationViewController = storyboard.instantiateViewController(withIdentifier: "AddViewController") as? AddViewController else {return}
+            destinationViewController.modalPresentationStyle = .currentContext
+            destinationViewController.photo = self.photos[sender.tag]
+            self.present(destinationViewController, animated: true, completion: nil)
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler:
+        {
+            (alert: UIAlertAction!) -> Void in
+            print("Cancelled")
+        })
+        optionMenu.addAction(deleteAction)
+        optionMenu.addAction(shareAction)
+        optionMenu.addAction(editAction)
+        optionMenu.addAction(cancelAction)
+        self.present(optionMenu, animated: true, completion: nil)
     }
 }

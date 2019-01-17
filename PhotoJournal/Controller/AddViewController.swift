@@ -9,18 +9,28 @@
 import UIKit
 
 class AddViewController: UIViewController {
-    var photo: PhotoJournal!
+    var photo: PhotoJournal?
     
-    private var imagePickerViewController: UIImagePickerController!
     private var descriptionText = "Description..."
+    private var imagePickerViewController: UIImagePickerController!
+    var indexNumber: Int!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var addImage: UIImageView!
     @IBOutlet weak var addTextView: UITextView!
     var imageHolder: UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let photo = photo {
+            addImage.image = UIImage(data: photo.imageData)
+            imageHolder = addImage.image
+            addTextView.text = photo.description
+            addTextView.textColor = .black
+            
+        } else {
+            setupTextViews()
+            imageHolder = addImage.image
+        }
         setupImagePickerViewController()
-        setupTextViews()
     }
     private func setupTextViews() {
         addTextView.delegate = self
@@ -35,6 +45,9 @@ class AddViewController: UIViewController {
         }
     }
     @IBAction func Save(_ sender: UIBarButtonItem) {
+        if let deleteFile = photo {
+            
+        }
         guard let description = addTextView.text else {fatalError("Description is nil")}
         let date = Date()
         let isoDateFormatter = ISO8601DateFormatter()
@@ -65,6 +78,9 @@ class AddViewController: UIViewController {
         imagePickerViewController.sourceType = .camera
         showImagePickerController()
     }
+    @IBAction func tapped(_ sender: UITapGestureRecognizer) {
+        addTextView.resignFirstResponder()
+    }
 }
 
 extension AddViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -91,3 +107,4 @@ extension AddViewController: UITextViewDelegate {
         }
     }
 }
+

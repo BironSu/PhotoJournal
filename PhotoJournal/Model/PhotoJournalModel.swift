@@ -28,6 +28,10 @@ final class PhotoJournalModel {
         savePhotoJournal()
         
     }
+    static func deletePhotoJournal(index: Int) {
+        photoJournal.remove(at: index)
+        savePhotoJournal()
+    }
     static func getPhotoJournal() -> [PhotoJournal] {
         let path = DataPersistenceManager.filepathToDocumentsDirectory(filename: filename).path
         if FileManager.default.fileExists(atPath: path) {

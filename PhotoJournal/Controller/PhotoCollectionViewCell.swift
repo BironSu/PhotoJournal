@@ -12,4 +12,5 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var mainDate: UILabel!
     @IBOutlet weak var mainTextView: UITextView!
+    @IBOutlet weak var editButton: UIButton!
 }

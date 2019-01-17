@@ -67,7 +67,8 @@
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HSr-ot-wRE">
-                                                            <rect key="frame" x="274" y="0.0" width="30" height="19"/>
+                                                            <rect key="frame" x="284" y="0.0" width="30" height="20"/>
+                                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <state key="normal">
                                                                 <attributedString key="attributedTitle">
                                                                     <fragment content=". . .">
@@ -78,16 +79,19 @@
                                                                     </fragment>
                                                                 </attributedString>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="editButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8KZ-on-p1J"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="0.59567636986301364" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="Ndk-tQ-Uhf" firstAttribute="top" secondItem="HSr-ot-wRE" secondAttribute="bottom" constant="1" id="Q2g-Qm-ydS"/>
+                                                        <constraint firstAttribute="trailing" secondItem="HSr-ot-wRE" secondAttribute="trailing" id="F8D-kJ-98Z"/>
+                                                        <constraint firstItem="Ndk-tQ-Uhf" firstAttribute="top" secondItem="HSr-ot-wRE" secondAttribute="bottom" id="agx-FI-27e"/>
                                                         <constraint firstItem="Ndk-tQ-Uhf" firstAttribute="leading" secondItem="UZW-Cz-t7H" secondAttribute="leading" id="cXg-uy-5Av"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ndk-tQ-Uhf" secondAttribute="trailing" id="mC9-Y5-FOT"/>
-                                                        <constraint firstItem="HSr-ot-wRE" firstAttribute="top" secondItem="UZW-Cz-t7H" secondAttribute="top" id="mED-lA-wO5"/>
                                                         <constraint firstItem="Ndk-tQ-Uhf" firstAttribute="top" secondItem="UZW-Cz-t7H" secondAttribute="top" constant="20" id="nTX-WJ-jEP"/>
-                                                        <constraint firstAttribute="trailing" secondItem="HSr-ot-wRE" secondAttribute="trailing" constant="10" id="nYO-OU-pat"/>
+                                                        <constraint firstItem="HSr-ot-wRE" firstAttribute="top" secondItem="UZW-Cz-t7H" secondAttribute="top" id="sXu-al-ft6"/>
                                                         <constraint firstItem="S9T-D1-HXh" firstAttribute="top" secondItem="Ndk-tQ-Uhf" secondAttribute="bottom" id="vM3-e2-OPA"/>
                                                     </constraints>
                                                 </view>
@@ -108,6 +112,7 @@
                                             <constraint firstAttribute="trailingMargin" secondItem="aDT-oI-StM" secondAttribute="trailing" constant="20" id="v8v-AE-cl9"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="editButton" destination="HSr-ot-wRE" id="kce-M8-cFi"/>
                                             <outlet property="mainDate" destination="S9T-D1-HXh" id="Gtj-Vw-m4j"/>
                                             <outlet property="mainImage" destination="aDT-oI-StM" id="OmX-TH-Vqg"/>
                                             <outlet property="mainTextView" destination="Ndk-tQ-Uhf" id="c4F-z8-4ha"/>
@@ -187,6 +192,10 @@
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image-2" translatesAutoresizingMaskIntoConstraints="NO" id="rbS-HK-52T">
                                 <rect key="frame" x="0.0" y="245.5" width="375" height="333.5"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="lzI-vc-ZM4" appends="YES" id="0mR-rt-NdI"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -215,6 +224,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJZ-I1-sa8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lzI-vc-ZM4">
+                    <connections>
+                        <action selector="tapped:" destination="xo8-Ot-jwd" id="8gl-Xn-HYO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1817" y="112"/>
         </scene>

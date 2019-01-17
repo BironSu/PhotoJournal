@@ -74,6 +74,7 @@ extension PhotoJournalViewController: UICollectionViewDataSource{
             guard let destinationViewController = storyboard.instantiateViewController(withIdentifier: "AddViewController") as? AddViewController else {return}
             destinationViewController.modalPresentationStyle = .currentContext
             destinationViewController.photo = self.photos[sender.tag]
+            destinationViewController.indexNumber = sender.tag
             self.present(destinationViewController, animated: true, completion: nil)
         })
         

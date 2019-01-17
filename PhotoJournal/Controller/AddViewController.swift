@@ -45,8 +45,8 @@ class AddViewController: UIViewController {
         }
     }
     @IBAction func Save(_ sender: UIBarButtonItem) {
-        if let deleteFile = photo {
-            
+        if let deleteFile = indexNumber {
+            PhotoJournalModel.deletePhotoJournal(index: deleteFile)
         }
         guard let description = addTextView.text else {fatalError("Description is nil")}
         let date = Date()

@@ -64,7 +64,7 @@ extension PhotoJournalViewController: UICollectionViewDataSource{
         let shareAction = UIAlertAction(title: "Share", style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
-            print("Shared")
+            print("I don't have a phone to share button")
         })
         
         let editAction = UIAlertAction(title: "Edit", style: .default, handler:
@@ -84,7 +84,7 @@ extension PhotoJournalViewController: UICollectionViewDataSource{
             print("Cancelled")
         })
         optionMenu.addAction(deleteAction)
-        optionMenu.addAction(shareAction)
+        //optionMenu.addAction(shareAction)
         optionMenu.addAction(editAction)
         optionMenu.addAction(cancelAction)
         self.present(optionMenu, animated: true, completion: nil)

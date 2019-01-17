@@ -25,7 +25,6 @@ class AddViewController: UIViewController {
             imageHolder = addImage.image
             addTextView.text = photo.description
             addTextView.textColor = .black
-            
         } else {
             setupTextViews()
             imageHolder = addImage.image

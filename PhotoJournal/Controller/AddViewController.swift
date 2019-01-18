@@ -17,6 +17,7 @@ class AddViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var addImage: UIImageView!
     @IBOutlet weak var addTextView: UITextView!
+    @IBOutlet weak var photoLibraryButton: UIBarButtonItem!
     var imageHolder: UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +26,11 @@ class AddViewController: UIViewController {
             imageHolder = addImage.image
             addTextView.text = photo.description
             addTextView.textColor = .black
+            photoLibraryButton.isEnabled = false
         } else {
             setupTextViews()
             imageHolder = addImage.image
+            photoLibraryButton.isEnabled = true
         }
         setupImagePickerViewController()
     }

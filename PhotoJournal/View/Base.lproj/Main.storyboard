@@ -221,6 +221,7 @@
                         <outlet property="addImage" destination="rbS-HK-52T" id="1Y8-1j-Uvf"/>
                         <outlet property="addTextView" destination="kFY-zv-x1t" id="YiY-fh-gbQ"/>
                         <outlet property="cameraButton" destination="rhc-Aj-9NC" id="pLI-H6-vLK"/>
+                        <outlet property="photoLibraryButton" destination="IDG-q1-LWv" id="tzt-7R-CUH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJZ-I1-sa8" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -64,7 +64,11 @@ extension PhotoJournalViewController: UICollectionViewDataSource{
         let shareAction = UIAlertAction(title: "Share", style: .default, handler:
         {
             (alert: UIAlertAction!) -> Void in
-            print("I don't have a phone to share button")
+            if let image = UIImage(data: self.photos[sender.tag].imageData) {
+                let shareText = self.photos[sender.tag].description
+            let vc = UIActivityViewController(activityItems: [shareText, image], applicationActivities: [])
+            self.present(vc, animated: true, completion: nil)
+            }
         })
         
         let editAction = UIAlertAction(title: "Edit", style: .default, handler:
@@ -84,7 +88,7 @@ extension PhotoJournalViewController: UICollectionViewDataSource{
             print("Cancelled")
         })
         optionMenu.addAction(deleteAction)
-        //optionMenu.addAction(shareAction)
+        optionMenu.addAction(shareAction)
         optionMenu.addAction(editAction)
         optionMenu.addAction(cancelAction)
         self.present(optionMenu, animated: true, completion: nil)
